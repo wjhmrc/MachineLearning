@@ -4,7 +4,7 @@ import numpy
 import matplotlib.pyplot as plt
 import time
 
-start = time.clock()
+start = time.clock()  # 计时
 
 # 准备数据集
 dataSet = []  # 数据集
@@ -47,12 +47,10 @@ def KMeans(dataSet, k):
             j += 1
 
         # 如果结果集不再更新，证明已经收敛，退出循环
-
         if c == c_last:
             print(turns)
             break
         c_last = c
-
     return c
 
 
@@ -61,11 +59,13 @@ result = KMeans(dataSet, 4)
 # print(len(result[1]))
 # print(len(result[2]))
 # print(len(result[3]))
+
+# 画图
 markers = ['x', '*', '+', '^', 'o']
 for i in range(4):
     for j in range(len(result[i])):
         plt.scatter(result[i][j][0], result[i][j][1], s=60, marker=markers[i], c='b', alpha=0.5)
-plt.title(' ')
+plt.title('K-Means')
 plt.show()
 plt.savefig('KMeans.png')
 
